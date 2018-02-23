@@ -1,6 +1,6 @@
 {
   "name": "react-accordion-composable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Accordion component. Composable: contents of the Title and Body parts is the responsibility of nested elements.",
   "main": "build/index.js",
   "repository": {
