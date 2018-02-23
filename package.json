@@ -1,0 +1,40 @@
+{
+  "name": "react-accordion-composable",
+  "version": "0.1.0",
+  "description": "React Accordion component. Composable: contents of the Title and Body parts is the responsibility of nested elements.",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heroqu/react-accordion-composable.git"
+  },
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "webpack": "^3.11.0"
+  },
+  "keywords": [
+    "React",
+    "React component",
+    "Accordion",
+    "Accordeon"
+  ],
+  "author": "Heroqu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heroqu/react-accordion-composable/issues"
+  },
+  "homepage": "https://github.com/heroqu/react-accordion-composable#readme"
+}
