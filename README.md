@@ -4,6 +4,8 @@ React component for Accordion.
 
 Composable because it keeps itself decoupled from content of the Title and Body parts of the sections.
 
+Here is the [demo](https://heroqu.github.io/react-accordion-composable-demo/).
+
 ## Installation
 
 `npm install --save react-accordion-composable`
@@ -81,7 +83,7 @@ While `<Accordion>` component holds its state and operates on its own, one can _
 
 Here we tell Accordion that it should switch to `Accordion Off` mode. The `ts` is a timestamp and whenever it changes the Accordion will know the new message came and it should read it and apply.
 
-This message can be set once as an initialization, or, it can be _sent_ on a regular basis if the logic of bigger application needs to manipulate the accordion from outside by changing its mode and/or expanding/collapsing particular sections.
+This message can be set once as an initialization, or, it can be _sent_ on a regular basis (see the [demo](https://heroqu.github.io/react-accordion-composable-demo/)) if the logic of bigger application needs to manipulate the accordion from outside by changing its mode and/or expanding/collapsing particular sections.
 
 More then one action can be wrapped into a message at a time:
 
@@ -91,10 +93,10 @@ More then one action can be wrapped into a message at a time:
       {type:'AccordionOff'},
       {type:'SelectIds', ids: ['3']},
     ]
-    ts:'12345'
+    ts:'78910'
     } }>
 ```
 
 and the order of actions does matter.
 
-This approach is pretty powerful, as it allows one to dispatch actions to Accordion from outside while keeping the Accordion decoupled from external state stores the main application can be using. There is a helper function to compose messages from actions with automatic time-stamping.
+This approach is pretty powerful, as it allows one to dispatch actions to Accordion from outside while keeping the Accordion decoupled from external state stores the main application can be using. There is a helper function to compose messages from actions with automatic time-stamping, and one can see a full fledged example in the [repo](https://github.com/heroqu/react-accordion-composable-demo) of the [demo](https://heroqu.github.io/react-accordion-composable-demo/)
