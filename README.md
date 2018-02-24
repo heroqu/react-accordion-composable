@@ -6,9 +6,25 @@ Composable because it keeps itself decoupled from content of the Title and Body 
 
 Here is the [demo](https://heroqu.github.io/react-accordion-composable-demo/).
 
+## Table of Contents
+
+* [Installation](#installation)
+* [Credits](#credits)
+* [Ideas](#ideas)
+* [Usage](#usage)
+  + [Basic example](#basic-example)
+    - [Styling](#styling)
+  + [Modes of operation](#modes-of-operation)
+  + [Power features](#power-features)
+
 ## Installation
 
 `npm install --save react-accordion-composable`
+
+## Credits
+
+The architecture and code of this component is greatly inspired and influenced by [Accordion example](http://jsfiddle.net/jhudson8/135oo6f8/) of [Joe Hudson](https://github.com/jhudson8)'s.
+There I've learnt the elegant way of enhancing the props of child components. His code was the starting point and some chunks of his example have stayed almost untouched here.
 
 ## Ideas
 
@@ -20,33 +36,33 @@ This Accordion is called __composable__ because such a setup separates concerns:
 
 ### Basic example
 
-``` javascript
+```jsx
 import { Accordion, AccordionSection } from 'react-accordion-composable'
 
 // then inside react component:
-  // ...
-  render (
-    <div>
-      <h1>Accordion goes here:</h1>
-      <Accordion>
-        <AccordionSection id="1">
-          <h3>Title 1</h3>
-          <p>Body 1</p>
-        </AccordionSection>
-        <AccordionSection id="2">
-          <div>
-            <h3>Title 2</h3>
-            <p>title 2 - continues</p>
-          </div>
-          <p>Body 2</p>
-          <div>
-            Body 2 - continues as next (sibling) child
-            <p>and can be nested further as desired</p>
-          </div>
-        </AccordionSection>
-      </Accordion>
-    </div>  
-  )
+// ...
+render (
+  <div>
+    <h1>Accordion goes here:</h1>
+    <Accordion>
+      <AccordionSection id="1">
+        <h3>Title 1</h3>
+        <p>Body 1</p>
+      </AccordionSection>
+      <AccordionSection id="2">
+        <div>
+          <h3>Title 2</h3>
+          <p>title 2 - continues</p>
+        </div>
+        <p>Body 2</p>
+        <div>
+          Body 2 - continues as next (sibling) child
+          <p>and can be nested further as desired</p>
+        </div>
+      </AccordionSection>
+    </Accordion>
+  </div>  
+)
 ```
 
 This illustrates composability: the title part of section 2 is the first child element inside `<AccordionSection>` and whatever is there nested inside it is still the title part and going to be displayed.
@@ -57,11 +73,10 @@ The body part of section 2 is all the other child elements nested inside `<Accor
 
 One can use css classes on both `<Accordion>` and `<AccordionSection>`, as internally they are based on `<div>`-s:
 
-```
-...
-  <Accordion className="someClass">
-    <AccordionSection className="otherClass" id="1">
-...
+```jsx
+<Accordion className="someClass">
+  <AccordionSection className="otherClass" id="1">
+// ...
 ```
 
 One can use `{ display: flex; }` for `<Accordion>` e.g. and the sections will obey.
@@ -74,11 +89,11 @@ Accordion component operates in two modes: `Accordion On` and `Accordion Off`. I
 
 While `<Accordion>` component holds its state and operates on its own, one can _influence_ it from outside by sending it a 'message' through a `msg` prop. For example:
 
-```
-  <Accordion msg={ {
-    actions: {type:'AccordionOff'},
-    ts:'12345'
-    } }>
+```jsx
+<Accordion msg={ {
+  actions: {type:'AccordionOff'},
+  ts:'12345'
+  } }>
 ```
 
 Here we tell Accordion that it should switch to `Accordion Off` mode. The `ts` is a timestamp and whenever it changes the Accordion will know the new message came and it should read it and apply.
@@ -87,14 +102,14 @@ This message can be set once as an initialization, or, it can be _sent_ on a reg
 
 More then one action can be wrapped into a message at a time:
 
-```
-  <Accordion msg={ {
-    actions: [
-      {type:'AccordionOff'},
-      {type:'SelectIds', ids: ['3']},
-    ]
-    ts:'78910'
-    } }>
+```jsx
+<Accordion msg={ {
+  actions: [
+    {type:'AccordionOff'},
+    {type:'SelectIds', ids: ['3']},
+  ]
+  ts:'78910'
+  } }>
 ```
 
 and the order of actions does matter.
