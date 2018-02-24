@@ -13,7 +13,7 @@ Here is the [demo](https://heroqu.github.io/react-accordion-composable-demo/).
 * [Ideas](#ideas)
 * [Usage](#usage)
   + [Basic example](#basic-example)
-    - [Styling](#styling)
+  + [Styling](#styling)
   + [Modes of operation](#modes-of-operation)
   + [Power features](#power-features)
 
@@ -69,7 +69,7 @@ This illustrates composability: the title part of section 2 is the first child e
 
 The body part of section 2 is all the other child elements nested inside `<AccordionSection>`: its second and third children. Again, one can use as simple or as complex elements here as one likes.
 
-#### Styling
+### Styling
 
 One can use css classes on both `<Accordion>` and `<AccordionSection>`, as internally they are based on `<div>`-s:
 
