@@ -23,14 +23,14 @@ Here is the [demo](https://heroqu.github.io/react-accordion-composable-demo/).
 
 ## Credits
 
-The architecture and code of this component is greatly inspired and influenced by [Accordion example](http://jsfiddle.net/jhudson8/135oo6f8/) of [Joe Hudson](https://github.com/jhudson8)'s.
-There I've learnt the elegant way of enhancing the props of child components. His code was the starting point and some chunks of his example have stayed almost untouched here.
+The architecture and code of this component is greatly inspired and influenced by [Accordion example](http://jsfiddle.net/jhudson8/135oo6f8/) created by [Joe Hudson](https://github.com/jhudson8).
+There I've learnt the elegant way of enhancing the props of child components on the fly during rendering. His code was the starting point and some chunks of his example have stayed almost untouched here.
 
 ## Ideas
 
-`<Accordion>` element can hold several `<AccordionSection>` elements that can have a few child elements. The first child element inside each `<AccordionSection>` is treated as Title part and is always displayed, while child elements 2,3 etc. altogether are considered a Body part. Mouse clicking on any element inside a section toggles the visibility of its Body part.
+`<Accordion>` element can hold several `<AccordionSection>` elements that can have a few child elements. The first child element inside each `<AccordionSection>` is treated as _Title part_ and is always displayed, while child elements 2,3 etc. altogether are considered a _Body part_. Mouse clicking on any element inside a section toggles the visibility of its Body part.
 
-This Accordion is called __composable__ because such a setup separates concerns: `<Accordion>` and `<AccordionSection>` stay basically unseen (unless enforced by css) with the only responsibility of hiding and showing whatever happen to be stuffed inside sections. The responsibility of providing the contents is handed entirely over the nested elements. I consider this to be a more __react-ish way__ of doing things as compared to when one would have to supply title and body texts through props and `<AccordionSection>` would also be responsible for displaying and styling those texts.
+This Accordion is called __composable__ because such a setup separates concerns: `<Accordion>` and `<AccordionSection>` stay basically unseen (unless enforced by CSS) with the only responsibility of hiding and showing whatever happen to be stuffed inside sections. The responsibility of providing the contents is handed entirely over the nested elements. I consider this to be a more __react-ish way__ of doing things as compared to when one would have to supply title and body texts through props and `<AccordionSection>` would also be responsible for displaying and styling those texts.
 
 ## Usage
 
@@ -83,7 +83,9 @@ One can use `{ display: flex; }` for `<Accordion>` e.g. and the sections will ob
 
 ### Modes of operation
 
-Accordion component operates in two modes: `Accordion On` and `Accordion Off`. In the first mode no more then one section is expanded at a time and selecting a particular section collapses the previously expanded. In `Accordion Off` mode there is no control - each section can be collapsed or expanded independently.
+Accordion component operates in two modes: __Accordion On__ and __Accordion Off__. In the first mode no more then one section is expanded at a time and selecting a particular section collapses the previously expanded. In __Accordion Off__ mode there is no control - each section can be collapsed or expanded independently.
+
+The default mode is __Accordion On__.
 
 ### Power features
 
@@ -96,7 +98,7 @@ While `<Accordion>` component holds its state and operates on its own, one can _
   } }>
 ```
 
-Here we tell Accordion that it should switch to `Accordion Off` mode. The `ts` is a timestamp and whenever it changes the Accordion will know the new message came and it should read it and apply.
+Here we tell Accordion that it should switch to __Accordion Off__ mode. The `ts` is a timestamp and whenever it changes the Accordion will know the new message came and it should read it and apply.
 
 This message can be set once as an initialization, or, it can be _sent_ on a regular basis (see the [demo](https://heroqu.github.io/react-accordion-composable-demo/)) if the logic of bigger application needs to manipulate the accordion from outside by changing its mode and/or expanding/collapsing particular sections.
 
