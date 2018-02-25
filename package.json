@@ -8,8 +8,8 @@
     "url": "git+https://github.com/heroqu/react-accordion-composable.git"
   },
   "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": "^16.0.0"
