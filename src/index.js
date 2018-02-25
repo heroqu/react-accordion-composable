@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { xSet } from './xSet'
 import { ts, toArray, shallowEqual } from './util'
 
@@ -14,7 +13,7 @@ export const actionTypes = {
 
 /**
  * Wrap a list of actions or a single action into a `message`
- * - an object with a timestap that can be dispatched
+ * - an object with a timestamp that can be dispatched
  */
 export function actionsToMsg(actions) {
   return { actions: toArray(actions), ts: ts() }
@@ -224,14 +223,10 @@ export class Accordion extends Component {
   }
 }
 
-Accordion.propTypes = {
-  children: PropTypes.node
-}
-
 /**
  * Made with composability in mind:
  * It's just a div that holds children.
- * And its only purpose is to show/hide children keepeing
+ * And its only purpose is to show/hide children keeping
  * the first one always shown. This gives all the power
  * to the user: add whatever you like as the first child and
  * whatever you like as other children! E.g. title
@@ -239,24 +234,38 @@ Accordion.propTypes = {
  * complex react element, not just text.
  */
 export class AccordionSection extends Component {
-  visibleChildren() {
-    if (this.props.isSelected) {
-      // expand: show all the children
-      return this.props.children
-    } else {
-      // collapse: show only the first child which serve as
-      // unhidable title element
-      return React.Children.toArray(this.props.children).slice(0, 1)
-    }
-  }
-
   render() {
+    let Title = null
+    let Body = null
+    const bodyElements = []
+
+    React.Children.toArray(this.props.children).forEach((child, idx) => {
+      if (idx === 0) {
+        // first child plays role of a Title part
+        Title = child
+      } else {
+        // other children plays role of a Body part
+        bodyElements.push(child)
+      }
+    })
+
+    if (this.props.isSelected && bodyElements.length !== 0) {
+      // wrap body elements in a div to suppress mouse click bubbling
+      Body = (
+        <div key="body" onClick={e => e.stopPropagation()}>
+          {bodyElements}
+        </div>
+      )
+    }
+
+    const children = Body ? [Title, Body] : [Title]
+
     return (
       <div
         className={this.props.className}
         onClick={() => this.props.onToggle(this.props.id)}
       >
-        {this.visibleChildren()}
+        {children}
       </div>
     )
   }

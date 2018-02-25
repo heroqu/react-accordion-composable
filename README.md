@@ -12,9 +12,9 @@ Here is the [demo](https://heroqu.github.io/react-accordion-composable-demo/).
 * [Credits](#credits)
 * [Ideas](#ideas)
 * [Usage](#usage)
+  + [Modes of operation](#modes-of-operation)
   + [Basic example](#basic-example)
   + [Styling](#styling)
-  + [Modes of operation](#modes-of-operation)
   + [Power features](#power-features)
 
 ## Installation
@@ -33,6 +33,12 @@ There I've learnt the elegant way of enhancing the props of child components on 
 This Accordion is called __composable__ because such a setup separates concerns: `<Accordion>` and `<AccordionSection>` stay basically unseen (unless enforced by CSS) with the only responsibility of hiding and showing whatever happen to be stuffed inside sections. The responsibility of providing the contents is handed entirely over the nested elements. I consider this to be a more __react-ish way__ of doing things as compared to when one would have to supply title and body texts through props and `<AccordionSection>` would also be responsible for displaying and styling those texts.
 
 ## Usage
+
+### Accordion Modes
+
+Accordion component operates in two modes: __Accordion On__ and __Accordion Off__. In the first mode no more then one section is expanded at a time and selecting a particular section collapses the previously expanded. In __Accordion Off__ mode there is no control - each section can be collapsed or expanded independently.
+
+The default mode is __Accordion On__.
 
 ### Basic example
 
@@ -81,11 +87,7 @@ One can use css classes on both `<Accordion>` and `<AccordionSection>`, as inter
 
 One can use `{ display: flex; }` for `<Accordion>` e.g. and the sections will obey.
 
-### Modes of operation
 
-Accordion component operates in two modes: __Accordion On__ and __Accordion Off__. In the first mode no more then one section is expanded at a time and selecting a particular section collapses the previously expanded. In __Accordion Off__ mode there is no control - each section can be collapsed or expanded independently.
-
-The default mode is __Accordion On__.
 
 ### Power features
 
