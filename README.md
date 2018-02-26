@@ -12,7 +12,7 @@ Here is the [demo](https://heroqu.github.io/react-accordion-composable-demo/).
 * [Credits](#credits)
 * [Ideas](#ideas)
 * [Usage](#usage)
-  + [Modes of operation](#modes-of-operation)
+  + [Accordion Modes](#accordion-modes)
   + [Basic example](#basic-example)
   + [Styling](#styling)
   + [Power features](#power-features)
