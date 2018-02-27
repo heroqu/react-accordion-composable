@@ -85,8 +85,8 @@ xSet.prototype.XOR = function(other) {
     return xSet(this)
   }
 
-  if (!(other instanceof Set)) {
-    other = new Set(other)
+  if (!(other instanceof xSet)) {
+    other = new xSet(other)
   }
 
   // do XOR on contained values
