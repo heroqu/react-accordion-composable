@@ -12,7 +12,7 @@ export function toArray(x) {
 }
 
 /**
- * Performs equality by iterating through keys on an object and returning false
+ * Performs equality check by iterating through keys on an object and returning false
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
@@ -38,8 +38,8 @@ export function shallowEqual(objA, objB) {
   }
 
   // Test for A's keys different from B.
-  var bHasOwnProperty = hasOwnProperty.bind(objB)
-  for (var i = 0; i < keysA.length; i++) {
+  const bHasOwnProperty = hasOwnProperty.bind(objB)
+  for (let i = 0; i < keysA.length; i++) {
     if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
       return false
     }
@@ -47,12 +47,5 @@ export function shallowEqual(objA, objB) {
 
   return true
 }
-
-// function shallowCompare(instance, nextProps, nextState) {
-//   return (
-//     !shallowEqual(instance.props, nextProps) ||
-//     !shallowEqual(instance.state, nextState)
-//   )
-// }
 
 export default { ts, toArray, shallowEqual }
