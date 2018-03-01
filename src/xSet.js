@@ -1,5 +1,5 @@
 /**
- * This is a data structure to manipulate with ids
+ * This is a data structure to manipulate ids
  * of Accordion sections.
  *
  * Could have used ES6 class to extend ES6 Set,
@@ -62,7 +62,7 @@ xSet.prototype.first = function() {
 }
 
 /**
- * Union operation
+ * Intersection operation
  * parameter can be single value or iterable (including another Set/xSet instance)
  *
  * @param values
