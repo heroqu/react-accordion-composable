@@ -28,7 +28,7 @@ There I've learnt the elegant way of enhancing the props of child components on 
 
 ## Ideas
 
-`<Accordion>` element can hold several `<AccordionSection>` elements that can have a few child elements. The first child element inside each `<AccordionSection>` is treated as _Title part_ and is always displayed, while child elements 2,3 etc. altogether are considered a _Body part_. Mouse clicking on any element inside a section toggles the visibility of its Body part.
+`<Accordion>` element can hold several `<AccordionSection>` elements that can have a few child elements. The first child element inside each `<AccordionSection>` is treated as _Title part_ and is always displayed, while child elements 2,3 etc. altogether are considered a _Body part_. Mouse clicking on _Title part_ inside a section toggles the visibility of its _Body part_.
 
 This Accordion is called __composable__ because such a setup separates concerns: `<Accordion>` and `<AccordionSection>` stay basically unseen (unless enforced by CSS) with the only responsibility of hiding and showing whatever happen to be stuffed inside sections. The responsibility of providing the contents is handed entirely over the nested elements. I consider this to be a more __react-ish way__ of doing things as compared to when one would have to supply title and body texts through props and `<AccordionSection>` would also be responsible for displaying and styling those texts.
 
@@ -86,8 +86,6 @@ One can use css classes on both `<Accordion>` and `<AccordionSection>`, as inter
 ```
 
 One can use `{ display: flex; }` for `<Accordion>` e.g. and the sections will obey.
-
-
 
 ### Power features
 
