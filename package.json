@@ -1,7 +1,7 @@
 {
   "name": "react-accordion-composable",
-  "version": "0.1.11",
-  "description": "React Accordion component. Composable: contents of the Title and Body parts is the responsibility of nested elements.",
+  "version": "1.0.0",
+  "description": "React Accordion component. Decoupled from title and body parts of its sections.",
   "main": "build/index.js",
   "repository": {
     "type": "git",
@@ -9,26 +9,36 @@
   },
   "scripts": {
     "build": "webpack",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "postversion": "npm publish",
+    "postpublish": "git push origin --all; git push origin --tags",
+    "lint": "eslint src/**/*.js"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "react": "^16.2.0",
-    "webpack": "^3.11.0"
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "webpack": "^3.12.0"
   },
   "keywords": [
     "React",
     "React component",
     "Accordion",
-    "Accordeon"
+    "Accordeon",
+    "collapsible"
   ],
   "author": "Heroqu",
   "license": "MIT",

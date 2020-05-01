@@ -23,24 +23,24 @@
  */
 export function xSet(from) {
   if (!(this instanceof xSet)) {
-    return new xSet(from)
+    return new xSet(from);
   }
 
   // always sort values at construction time
-  this.s = new Set(argToArray(from).sort())
+  this.s = new Set(argToArray(from).sort());
 }
 
 xSet.prototype.has = function(...arg) {
-  return this.s.has(...arg)
-}
+  return this.s.has(...arg);
+};
 
 xSet.prototype.size = function() {
-  return this.s.size
-}
+  return this.s.size;
+};
 
 xSet.prototype[Symbol.iterator] = function() {
-  return this.s.values()
-}
+  return this.s.values();
+};
 
 /**
  * Extract underlying values as an Array
@@ -49,8 +49,8 @@ xSet.prototype[Symbol.iterator] = function() {
  * @returns {Array}
  */
 xSet.prototype.toArray = function() {
-  return [...this.s]
-}
+  return [...this.s];
+};
 
 /**
  * Create an xSet with only the first element, if any
@@ -58,8 +58,8 @@ xSet.prototype.toArray = function() {
  * @returns {xSet} - always a new object
  */
 xSet.prototype.first = function() {
-  return xSet([...this.s].slice(0, 1))
-}
+  return xSet([...this.s].slice(0, 1));
+};
 
 /**
  * Intersection operation
@@ -69,8 +69,8 @@ xSet.prototype.first = function() {
  * @returns {xSet} - always a new object
  */
 xSet.prototype.AND = function(other) {
-  return xSet([...argToArray(other)].filter(x => this.has(x)))
-}
+  return xSet([...argToArray(other)].filter(x => this.has(x)));
+};
 
 /**
  * XOR operation
@@ -82,19 +82,19 @@ xSet.prototype.AND = function(other) {
 xSet.prototype.XOR = function(other) {
   if (!other) {
     // clone self
-    return xSet(this)
+    return xSet(this);
   }
 
   if (!(other instanceof xSet)) {
-    other = new xSet(other)
+    other = new xSet(other);
   }
 
   // do XOR on contained values
   return xSet([
     ...[...this].filter(x => !other.has(x)),
-    ...[...other].filter(x => !this.has(x))
-  ])
-}
+    ...[...other].filter(x => !this.has(x)),
+  ]);
+};
 
 /**
  * Return true if underlying values are the same in Sets' keys terms.
@@ -107,8 +107,8 @@ xSet.prototype.XOR = function(other) {
  * @returns {Boolean}
  */
 xSet.prototype.equal = function(other) {
-  return this.XOR(other).size() === 0
-}
+  return this.XOR(other).size() === 0;
+};
 
 /**
  * ---------------- Helpers ----------------
@@ -117,9 +117,9 @@ xSet.prototype.equal = function(other) {
 function isIterable(obj) {
   // checks for null and undefined
   if (obj == null) {
-    return false
+    return false;
   }
-  return typeof obj[Symbol.iterator] === 'function'
+  return typeof obj[Symbol.iterator] === 'function';
 }
 
 /**
@@ -127,20 +127,20 @@ function isIterable(obj) {
  * Strings and non-iterables are wraped into a single item array
  */
 function argToArray(arg) {
-  const t = typeof arg
+  const t = typeof arg;
   if (t === 'undefined') {
-    return []
+    return [];
   }
 
   if (t === 'string' || arg instanceof String) {
-    return [arg]
+    return [arg];
   }
 
   if (isIterable(arg)) {
-    return Array.isArray(arg) ? arg : [...arg]
+    return Array.isArray(arg) ? arg : [...arg];
   }
 
-  return [arg]
+  return [arg];
 }
 
-export default xSet
+export default xSet;
